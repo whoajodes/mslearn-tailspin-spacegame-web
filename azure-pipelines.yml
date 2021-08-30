@@ -59,6 +59,5 @@ steps:
     zipAfterPublish: true
 
 - task: PublishBuildArtifacts@1
-  inputs:
-    pathToPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: drop
+  displayName: 'Publish Artifact: drop'
+  condition: succeeded()
