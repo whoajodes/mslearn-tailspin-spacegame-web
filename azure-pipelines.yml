@@ -16,28 +16,28 @@ variables:
 
 steps:
 - task: UseDotNet@2
-  displayname: 'Use .NET SDK 5.x'
+  displayName: 'Use .NET SDK 5.x'
   inputs: 
     packageType: sdk
     version: '5.x'
 
 - task: Npm@1
-  displayname: 'Run npm install'
+  displayName: 'Run npm install'
   inputs:
     verbose: false
 
 - script: './node_modules/.bin/node-sass Tailspin.SpaceGame.Web/wwwroot --output Tailspin.SpaceGame.Web/wwwroot'
-  displayname: 'Compile sass assets'
+  displayName: 'Compile sass assets'
 
 - task: gulp@1
-  displayname: 'Run gulp tasks'
+  displayName: 'Run gulp tasks'
 
 - script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfo.text'
-  displayname: 'Write build info'
+  displayName: 'Write build info'
   workingDirectory: Tailspin.SpaceGame.Web/wwwroot
 
 - task: DotNetCoreCLI@2
-  displayname: 'Restore project dependencies'
+  displayName: 'Restore project dependencies'
   inputs:
     command: 'restore'
     projects: '**/*.csproj'
